@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <title>Saumya-TATA MOTORS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+
+
+    <body>
+      <nav>
+        <span><h3>HOSPITAL NAME</h3></span>
+        <span><a href="/">Logout</a></span>
+      </nav>
+      
+      <div class="main">
+
+        <div class="left">
+              <br><br>
+                      <form id="login" action="/login" method="POST"  enctype="application/x-www-form-urlencoded" >
+              <h2>Login </h2>
+              <p id="left-msg" style="color:crimson; font-weight: 100; font-size:8pt;"></p>
+              <label for="usertypes">User Type</label><br><br>
+              <select id="usertype" name="usertype">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="admin">Admin</option>
+              </select><br>
+              <input type="text" placeholder="Enter Phone No." id="phno" name="phno"><br>
+              <input type="password" placeholder="Enter Password." id="loginpswd" name="loginpswd"><br><br>   <br>
+              <input type="submit"  value="login" id="loginsubmit">     
+            </form>
+          </div>
+          
+          <div class="right">
+            <form id="registerPatient"  onsubmit="validate(event)">
+              <h2>Register</h2>
+              <p id="right-msg" style="color:crimson;"></p>
+              <label for="fname">First Name:</label>
+              <input type="text" id="fname" name="fname" required><br>
+              <label for="lname">Last Name:</label>
+              <input type="text" id="lname" name="lname" required><br><br>
+              <label for="ph">Phone no:</label>
+              <input type="tel" id="ph" name="ph" required><br><br>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required><br><br>
+              <label for="age">Age:</label>
+              <input type="number" id="age" name="age" required><br><br>
+              <label for="gender">Gender:</label>
+               <select id = "gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select> 
+              <hr noshade="true" color="#0E8388">
+              <label for="pswd">Password:</label>
+              <input type="password" id="pswd" name="pswd" required><br><br>
+              <label for="confpswd">Confirm Password:</label>
+              <input type="password" id="confpswd" name="confpswd" required><br>
+              <br><br><br>
+              <input type="submit" value="Register" id="submit">
+            </form>
+          </div>
+
+      </div>
+
+
+  
+
+
+        <script>
+
+          //dynamic validation of form using EventListner
+           var fnameEl=document.getElementById('fname');
+           var lnameEl=document.getElementById('lname');
+           var phoneEl=document.getElementById('ph');
+           var mailEl=document.getElementById('email');
+           var AgeEl=document.getElementById('age');
+           var PasswordEl=document.getElementById('pswd');
+           var ConfPasswordEl=document.getElementById('confpswd');
+
+           fnameEl.addEventListener('input',fnamevalidate); 
+           lnameEl.addEventListener('input',lnamevalidate); 
+           phoneEl.addEventListener('input',phonevalidate);
+           mailEl.addEventListener('input',emailvalidate); 
+           AgeEl.addEventListener('input',agevalidate);
+           PasswordEl.addEventListener('input',pswdvalidate);
+           ConfPasswordEl.addEventListener('input',confpswdvalidate);
+            const unamepat = /^[A-Za-z]+$/;
+           
+            function fnamevalidate(){
+              const unamepat = /^[A-Za-z]+$/;
+              var fnameVal=fnameEl.value;
+              var fnameMatch=unamepat.test(fnameVal);
+              if(!fnameMatch){
+                document.getElementById('right-msg').innerText="Name must be only letters";
+                fnameEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                fnameEl.style.color="#0E8388";
+              }
+            }
+
+
+            function lnamevalidate(){
+              const unamepat = /^[A-Za-z]+$/;
+              var lnameVal=lnameEl.value;
+              var lnameMatch=unamepat.test(lnameVal);
+              if(!lnameMatch){
+                document.getElementById('right-msg').innerText="Name must be only letters";
+                lname.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                lnameEl.style.color="#0E8388";
+              }
+            }
+
+            function phonevalidate(){
+              
+              const phpat = /^[0-9]{10}$/;
+              var phoneVal=phoneEl.value;
+              var phoneMatch=phpat.test(phoneVal);
+              if(!phoneMatch){
+                document.getElementById('right-msg').innerText="Phone no. must be only 10-digits";
+                phoneEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                phoneEl.style.color="#0E8388";
+              }
+            }
+
+            function emailvalidate(){
+              
+              const mailpat =/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+              var mailVal=mailEl.value;
+              var mailMatch=mailpat.test(mailVal);
+              if(!mailMatch){
+                document.getElementById('right-msg').innerText="Email must contain '@' and subdomain";
+                mailEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                mailEl.style.color="#0E8388";
+              }
+            }
+
+            function agevalidate(){
+              
+              // const phpat = /^[0-9]{10}$/;
+              var ageVal=AgeEl.value;
+              
+              if(Number(ageVal)>99){
+                document.getElementById('right-msg').innerText="age must be 2 digits";
+                phoneEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                phoneEl.style.color="#0E8388";
+              }
+            }
+
+            function pswdvalidate(){
+              var pswdVal=String(PasswordEl.value);
+              const pswdpat=/^$/;
+              if(pswdVal.length<8){
+                document.getElementById('right-msg').innerText='the password must be atleast 8 characters long';
+                phoneEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                phoneEl.style.color="#0E8388";  
+              }
+
+            }
+
+            function confpswdvalidate(){
+              var confpswdVal=String(ConfPasswordEl.value);
+              var pswdVal=String(PasswordEl.value);
+              
+              if(confpswdVal != pswdVal){
+                document.getElementById('right-msg').innerText='the confirm password must be same as password';
+                phoneEl.style.color="crimson";
+              }
+              else{
+                document.getElementById('right-msg').innerText="";
+                phoneEl.style.color="#0E8388";  
+              }
+
+            }
+
+
+
+
+
+          function validate(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  var fname = String(document.getElementById("fname").value);
+  var lname = String(document.getElementById("lname").value);
+  var phone = String(document.getElementById("ph").value);
+  var mail = String(document.getElementById("email").value);
+  var age = String(document.getElementById("age").value);
+  var numAge = Number(age);
+  var gender=String(document.getElementById('gender').value);
+
+  var pswd=String(document.getElementById('pswd').value);
+  var confpswd=String(document.getElementById('confpswd').value);
+ 
+  
+
+  const phpat = /^[0-9]{10}$/;
+  const unamepat = /^[A-Za-z]+$/;
+  const mailpt = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const agepat = /^[0-9]{2}/;
+
+
+  let fnamematch = unamepat.test(fname);
+  let lnamematch = unamepat.test(lname);
+  let phmatch = phpat.test(phone);
+  let mailmatch = mailpt.test(mail);
+
+
+  if (!fnamematch || !lnamematch || !phmatch || !mailmatch || numAge < 0 || numAge > 100 || pswd.length<8 || confpswd != pswd) {
+    console.log("Validation failed");
+    document.getElementById("right-msg").innerText = "Please fill in all the information correctly";
+    return false;
+  }
+
+  console.log("Validation passed");
+
+
+  // Prepare the form data to send to the server
+  const myForm=document.getElementById('registerPatient');
+
+  const formData = new FormData(myForm);
+  formData.append('gender',gender);
+  const data=new URLSearchParams(formData);
+
+  console.log(formData);
+
+  // Send the form data to the server using Fetch API
+  fetch("/registerpatient", {
+    method: "POST",
+    body: data
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log("Form data submitted successfully");
+      return response.text();
+      
+    }
+    throw new Error("Form submission failed");
+  })
+  .then(data => {
+    console.log("promise data",data); // Handle the response from the server if needed
+    window.location.href = "register_success.html"; // Redirect to success page
+  })
+  .catch(error => {
+    console.log(error);
+    document.getElementById("right-msg").innerText = "Form submission failed. Please try again.";
+  });
+}
+
+
+function redirectToPatient(name, pno, email, det) {
+  // Perform any necessary data processing or manipulation here
+  if(name==null||pno==null||email==null||det==null){
+    name="Saumya Sejal";
+    pno="7209416003";
+    email="saumya.sejal2020@vitstudent.ac.in";
+    det="21,female";
+  }
+
+  // Redirect to patient.html with the query parameters
+  const queryParams = `name=${encodeURIComponent(name)}&pno=${encodeURIComponent(pno)}&email=${encodeURIComponent(email)}&det=${encodeURIComponent(det)}`;
+  window.location.href = `patient.html?${queryParams}`;
+}
+
+
+
+// function loginvalidation(event){
+//   event.preventDefault()
+
+//   var phpat=/^[0-9]{10}$/;
+//   var phno=String(document.getElementById('phno').value);
+//   var usertype=String(document.getElementById('usertype').value)
+
+//   let phmatch=phpat.test(phno);
+//   if(!phmatch){
+//     console.log('validation failed');
+//     document.getElementById('left-msg').innerText="Enter phone no. correctly";
+//     return 
+//   }
+
+//   console.log("validation passed");
+
+//   var loginForm=document.getElementById('login');
+  
+//   const formData2=new FormData(loginForm);
+//   formData2.append('usertype',usertype);
+//   formData2.append('phno',phno);
+//   const data=new URLSearchParams(formData2);
+//   // formData.append('fname',fname);
+//   // formData.append('lname',lname);
+//   // formData.append('ph',phone);
+//   // formData.append('age',age);
+
+
+//   console.log(formData2);
+
+//   // Send the form data to the server using Fetch API
+  
+//   fetch("/login", {
+//     method: "POST",
+//     body: data
+//   })
+//   .then(response => {
+//     if (response.ok) {
+//       console.log("Form data submitted successfully");
+//       return response.text();
+      
+//     }
+//     throw new Error("Form submission failed");
+//   }).then(data => {
+//     // alert("entered then");
+//     console.log("promise data",data)
+//     const urlParams = new URLSearchParams(window.location.search);
+//   const name = urlParams.get('name');
+//   const pno = urlParams.get('pno');
+//   const email = urlParams.get('email');
+//   const det = urlParams.get('det');
+
+//   // Pass the query parameters to the then(data) function
+  
+
+//     if(usertype=="patient"){
+//       redirectToPatient(name, pno, email, det);
+//       // window.location.href="patient.html";
+//     }
+//     else if(usertype=='doctor'){
+//       window.location.href="doctor.html";
+//     }
+
+//     else if(usertype=="admin"){
+//       window.location.href="admin.html";
+//     }
+//     // window.location.href = "register_success.html"; // Redirect to success page
+//   })
+//   .catch(error => {
+//     console.log(error);
+//     document.getElementById("left-msg").innerText = "Form submission failed. Please try again.";
+//   });
+
+// }
+          
+  
+        </script>
+
+
+    </body>
+</html>

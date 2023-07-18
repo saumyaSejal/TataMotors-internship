@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <title>Saumya-TATA MOTORS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="expressConnection\public\style.css">
+
+
+    <body>
+      <nav>
+        <span><h3>HOSPITAL NAME</h3></span>
+        <span><a href="">Logout</a></span>
+      </nav>
+      
+      <div class="main">
+
+        <div class="left">
+          
+              <br><br>
+                      <form id="login" onsubmit="loginvalidate(event)">
+              <h2>Login </h2>
+              <p id="left-msg" style="color:crimson; font-weight: 100; font-size:8pt;"></p>
+              <label for="usertypes">User Type</label><br><br>
+              <select id="usertypes">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="admin">Admin</option>
+              </select>
+              <input type="text" placeholder="Enter Phone No." id="phno"><br><br>        
+            </form>
+              
+         
+            
+          </div>
+          
+          <div class="right">
+            
+            <form id="registerPatient"  onsubmit="validate(event)">
+              <h2>Register</h2>
+              <p id="right-msg" style="color:crimson;"></p>
+              First Name:
+              <input type="text" id="fname"><br>
+              Last Name:
+              <input type="text" id="lname"><br><br>
+              Phone no:
+              <input type="tel" id="ph"><br><br>
+              Age:
+              <input type="number" id="age"><br>
+              Gender:
+              <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              Email:
+              <input type="email" id="mail"><br><br><br>
+               <input type="submit" value="Register" id="submit">
+            </form>
+
+            
+          </div>
+
+      </div>
+
+
+  
+
+
+        <script src="expressConnection\public\scripts\functions.js">
+        </script>
+
+<footer>
+  <p><h5>created By -</h5><br>
+    <h6><b>Saumya Sejal</b></h6></p>
+</footer>
+    </body>
+</html>

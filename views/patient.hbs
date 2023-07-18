@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <title>Saumya-TATA MOTORS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="expressConnection\public\style.css">
+    <style>
+        .left img{
+            height:140px;
+            width:140px;
+            border-radius:100%;
+        }
+
+        #pat-details{
+            font-weight: lighter;
+
+            
+        }
+    </style>
+
+
+    <body>
+      <nav>
+        <span><h3>HOSPITAL NAME</h3></span>
+        <span><a href="">Logout</a></span>
+      </nav>
+      
+      <div class="main">
+
+        <div class="left" style="text-align: center; color:beige;">
+    
+            <section id="pat-details" style="margin:24px;">
+                <h2 style="text-decoration: wavy;">Profile</h2>
+                <img src="man.png" alt="user">    
+                <h4 style="font-weight:800">Patient name</h4><br>
+                <em style="font-weight:200">45 , Male</em><br><br>
+                720XXXXXX5<br><br>
+                sample@gmail.com<br>
+            </section>
+
+          </div>
+          
+          <div class="right">
+            
+          </div>
+
+      </div>
+  
+
+
+        <script type="text/javascript">
+          
+          function validate(){
+            var fname=String(document.getElementById("fname").value);
+            console.log(fname)
+          var lname=String(document.getElementById("lname").value);
+          var phone=String(document.getElementById("ph").value);
+          var mail=String(document.getElementById("mail").value);
+          var age=String( document.getElementById('age').value);
+
+          if(fname=="" || lname=="" || phone=="" || mail=="" || age==""){
+            document.getElementById("right-msg").innerText="please fill all the information";
+            console.log("success")
+          }
+          else if(fname && lname && phone && mail){
+            document.getElementById('right-msg').innerText="successfully registered";
+          }
+          else{
+            console.log("fail")
+          }
+        }
+
+        function Logvalidate(){
+        var uname=String(document.getElementById('uname').value);
+        var pswd=String(document.getElementById('pswd').value);
+
+        console.log(uname+pswd);
+        if(uname==""||pswd==""){
+          document.getElementById("left-msg").innerText="Please enter all the credentials";
+        }
+
+        }
+  
+        </script>
+    </body>
+</html>

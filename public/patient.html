@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <title>Saumya-TATA MOTORS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .left img{
+            height:140px;
+            width:140px;
+            /* border-radius:100%; */
+        }
+
+        #pat-details{
+            font-weight: lighter;
+
+            
+        }
+    </style>
+
+
+    <body>
+      <nav>
+        <span><h3>HOSPITAL NAME</h3></span>
+        <span><a href="/">Logout</a></span>
+      </nav>
+      
+      <div class="main">
+
+        <div class="left" style="text-align: center; color:beige;">
+    
+            <section id="pat-details" style="margin:24px;">
+                <h2 style="text-decoration: wavy;">Profile</h2>
+                <img id="userImage" src="./icon/user.png" alt="user">    
+                <h4 style="font-weight:800" id="pname"></h4><br>
+                <em style="font-weight:200" id="pdet"></em><br><br>
+                <p id=pno></p><br><br>
+                <p id="pemail"></p><br>
+            </section>
+
+          </div>
+          
+          <div class="right">
+            
+          </div>
+
+      </div>
+  
+
+
+        <script type="text/javascript">
+          // profile.js - User Profile JavaScript
+console.log('in script tag');
+window.addEventListener('DOMContentLoaded', () => {
+  // Retrieve query parameters from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const pname = urlParams.get('name');
+  console.log(pname);
+  const pemail = urlParams.get('email');
+  console.log(pemail);
+  const page = urlParams.get('age');
+  console.log(page);
+  const pdet=urlParams.get('det');
+  console.log(pdet)
+  const pno=urlParams.get('pno');
+  console.log(pno);
+  userImage=document.getElementById("myImage");
+
+
+   
+  // Display user data on the profile page
+  document.getElementById('pname').textContent = `${pname}`;
+  document.getElementById('pemail').textContent = ` ${pemail}`;
+  document.getElementById('pdet').textContent=`${pdet}`;
+  document.getElementById('pno').textContent=`${pno}`
+});
+
+  
+        </script>
+    </body>
+</html>

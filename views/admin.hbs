@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <title>Saumya-TATA MOTORS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="expressConnection\public\style.css">
+
+
+    <body>
+      <nav>
+        <span><h3>HOSPITAL NAME</h3></span>
+        <span><a href="">Logout</a></span>
+      </nav>
+      
+      <div class="main">
+
+        <div class="left">
+            <section id="doc" style="display:block;padding:12px;">
+                <table>
+                    <tr>
+                        <th>Doctors Available</th>
+                        <th>Doc ID</th>
+                    </tr>
+                    <tr>
+                       <td> Dummy name 1.</td>
+                       <td>D-7856</td>
+                    </tr>
+                    <tr>
+                        <td> Dummy name 2.</td>
+                       <td>D-7656</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section id="admins" style="display:block; padding:12px; border-color:#0E8388;">
+                <table  style="margin-top:28px;border:1px solid #0E8388;">
+                    <tr>
+                        <th>Admins</th>
+                        <th>Sno</th>
+                    </tr>
+                    <tr>
+                       <td> Dummy name 1.</td>
+                       <td>1</td>
+                    </tr>
+                    <tr>
+                        <td> Dummy name 2.</td>
+                       <td>2</td>
+                    </tr>
+                </table>
+
+            </section>
+         
+            
+          </div>
+          
+          <div class="right">
+            
+            <form id="registerUser">
+              <h2>Register</h2>
+              <p id="right-msg" style="color:crimson;"></p>
+              Type of user:<br>
+              <select id="usertypes">
+                <option value="patient">Patient</option>
+                <option value="doctor">Doctor</option>
+                <option value="admin">Admin</option>
+              </select>
+              <br><br>
+              First Name:
+              <input type="text" id="fname"><br>
+              Last Name:
+              <input type="text" id="lname"><br><br>
+              Phone no:
+              <input type="tel" id="ph"><br><br>
+              Age:
+              <input type="number" id="age"><br>
+              Gender:
+              <input type="radio" name="gender" value="male">Male
+              <input type="radio" name="gender" value="female">Female<br>
+              Email:
+              <input type="email" id="mail"><br><br><br>
+              <button type="button" onclick="validate()" >Register</button>
+            </form>
+
+            
+          </div>
+
+      </div>
+  
+
+
+        <script type="text/javascript">
+          
+        </script>
+    </body>
+</html>

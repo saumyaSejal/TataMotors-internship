@@ -1,0 +1,123 @@
+
+          function validate(){
+            var fname=String(document.getElementById("fname").value);
+            console.log(fname)
+          var lname=String(document.getElementById("lname").value);
+          var phone=String(document.getElementById("ph").value);
+          var mail=String(document.getElementById("mail").value);
+          var age=String( document.getElementById('age').value);
+          var numAge=Number(age);
+          var gender=String(document.getElementById('gender').value)
+
+          const phpat=/^[0-9]{10}$/;
+          const unamepat=/^[A-Za-z]+$/;
+          const mailpt=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const agepat=/^[0-9]{2}/;
+
+          let fnamematch=unamepat.test(fname);
+          let lnamematch=unamepat.test(lname);
+          let phmatch=phpat.test(phone);
+          let mailmatch=mailpt.test(mail);
+          let agematch=agepat.test(age);
+
+
+          if(fname=="" || lname=="" || phone=="" || mail=="" || age==""){
+            console.log("fields empty");
+            document.getElementById("right-msg").innerText="please fill all the information";
+            return false ;
+            
+          }
+      
+             else if(!fnamematch||!lnamematch){
+              console.log("fname or lname empty");
+              document.getElementById("right-msg").innerText("Enter Valid name");
+              return false ; 
+            }
+            else if(!phmatch){
+              console.log("phone empty")
+              document.getElementById("right-msg").innerText="Enter valid Mobile no. without code";
+              return false  ; 
+            }
+            else if(!mailmatch){
+              console.log("mail empty")
+              document.getElementById("right-msg").innerText="Enter valid email";
+            }
+            else if(numAge>=0  && numAge<=100){
+              console.log("age empty")
+              document.getElementById("right-msg").innerText="Enter appropriate age";
+            }
+          
+          else{
+            console.log("Validation passed");
+    
+    // Prepare the form data to send to the server
+    const myForm=document.getElementById('registerPatient');
+
+    const formData = new FormData(myForm);
+    formData.append('gender',gender);
+    const data=new URLSearchParams(formData);
+    // formData.append('fname',fname);
+    // formData.append('lname',lname);
+    // formData.append('ph',phone);
+    // formData.append('age',age);
+
+
+    console.log(formData);
+  
+    // Send the form data to the server using Fetch API
+    fetch("/registerpatient", {
+      method: "POST",
+      body: data
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("Form data submitted successfully");
+        return response.text();
+        
+      }
+      throw new Error("Form submission failed");
+    })
+    .then(data => {
+      console.log(data); // Handle the response from the server if needed
+      window.location.href = "register_success.html"; // Redirect to success page
+    })
+    .catch(error => {
+      console.log(error);
+      document.getElementById("right-msg").innerText = "Form submission failed. Please try again.";
+    });
+          }
+        }
+
+        function Logvalidate(){
+        var uname=String(document.getElementById('uname').value);
+        var pswd=String(document.getElementById('pswd').value);
+
+        console.log(uname+pswd);
+        if(uname==""||pswd==""){
+          document.getElementById("left-msg").innerText="Please enter all the credentials";
+        }
+
+        }
+
+
+
+
+
+
+        __________________________________________________________
+
+        .then(data => {
+    alert("entered then");
+    console.log("promise data",data)
+    if(usertype=="patient"){
+      window.location.href="patient.html";
+    }
+    else if(usertype=='doctor'){
+      window.location.href="doctor.html";
+    }
+
+    else if(usertype=="admin"){
+      window.location.href="admin.html";
+    }
+    // window.location.href = "register_success.html"; // Redirect to success page
+  })
